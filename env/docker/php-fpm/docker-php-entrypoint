@@ -1,0 +1,32 @@
+#!/bin/bash
+
+set -e
+
+cp .env.${ENV} .env
+
+if [ "${ENV}" == "local" ]; then
+	if [ ! -d "vendor" ]
+	then
+	    echo "Install dependencies by composer install"
+	    composer install
+	fi
+
+	echo "Clear cache configuration"
+	php artisan config:clear
+
+
+else
+	echo "Configuration Caching"
+	php artisan config:cache
+fi
+
+#echo "Migrate the database with force"
+#php artisan migrate --force
+
+
+# first arg is `-f` or `--some-option`
+if [ "${1#-}" != "$1" ]; then
+	set -- php-fpm "$@"
+fi
+
+exec "$@"

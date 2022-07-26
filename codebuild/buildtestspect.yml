@@ -1,0 +1,15 @@
+version: 0.2
+phases:
+    install:
+        runtime-versions:
+            docker: 18
+    pre_build:
+        commands:
+        - echo "Adding dependencies"
+        - printenv
+    build:
+        commands:
+        - echo "Running build"
+    post_build:
+        commands:
+        - echo "Running post_build"

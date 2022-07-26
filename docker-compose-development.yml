@@ -1,0 +1,13 @@
+version: '2'
+services:
+    nginx:
+        build:
+          context: .
+          dockerfile: ./env/docker/nginx/Dockerfile
+    php:
+        build:
+          context: .
+          dockerfile: ./env/docker/php-fpm/Dockerfile
+          args:
+            BUILD_ENV: development
+

@@ -1,0 +1,89 @@
+version: '2'
+services:
+    base:
+      build:
+        context: .
+        dockerfile: ./env/docker/base/Dockerfile
+      command: "sleep 0"
+
+    node:
+        build:
+          context: .
+          dockerfile: ./env/docker/nodejs/Dockerfile
+        command: >
+          -c "npm install && npm run dev"
+        entrypoint: /bin/sh
+        volumes:
+          - ./src:/app/src:delegated
+
+    nginx:
+        build:
+          context: .
+          dockerfile: ./env/docker/nginx/Dockerfile
+        restart: always
+        ports:
+        - "20001:80"
+        volumes:
+          - ./src:/app:delegated
+          - ./env/docker/nginx/conf.d:/etc/nginx/conf.d
+        links:
+          - php
+    php:
+        build:
+          context: .
+          dockerfile: ./env/docker/php-fpm/Dockerfile
+          args:
+            BUILD_ENV: local
+        restart: always
+        volumes:
+          - ./src:/app:delegated
+        depends_on:
+          - mysql
+        environment:
+          - "ENV=local"
+          # - "ENV=development"
+          # - "ENV=staging"
+          # - "ENV=production"
+
+
+    mysql:
+        image: mysql:5.7
+        # Persistent data of mysql
+        volumes:
+          - ./env/docker/storage/mysql:/var/lib/mysql
+        restart: always
+        environment:
+          - MYSQL_ROOT_PASSWORD=123456
+          - MYSQL_DATABASE=laravel
+          - MYSQL_USER=laravel
+          - MYSQL_PASSWORD=123456
+        ports:
+          - "3306"
+
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        environment:
+          - MYSQL_ROOT_PASSWORD=123456
+          - PMA_HOST=mysql
+          - PMA_PORT=3306
+          - PMA_ARBITRARY=1
+        restart: always
+        depends_on:
+          - mysql
+        ports:
+        - "20002:80"
+        # volumes:
+          # - /sessions
+        links:
+          - mysql
+
+    codebuild:
+        image: amazonlinux
+        volumes:
+          - ./codebuild:/codebuild
+          - ./codedeploy:/codedeploy
+          - ./:/src
+        command: "sleep 10000000000"
+        environment:
+          - CODEBUILD_RESOLVED_SOURCE_VERSION=feefc35480f01d6612913daa9ea6229d26516b74
+
