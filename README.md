@@ -81,3 +81,9 @@ docker run -i --rm \
 - Remove healthcheck applicaton log
 
 ```
+
+
+### CI, CD
+```
+Replace ACCOUNT_ID with your real aws account id.
+```

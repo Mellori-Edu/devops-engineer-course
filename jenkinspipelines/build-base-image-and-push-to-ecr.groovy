@@ -16,7 +16,7 @@ pipeline {
     environment {
         PROJECT_NAME = "laraveldemo"
         // REGION = "ap-southeast-1"
-        // ECR_BASE_URL = "813995029960.dkr.ecr.ap-southeast-1.amazonaws.com"
+        // ECR_BASE_URL = "ACCOUNT_ID.dkr.ecr.ap-southeast-1.amazonaws.com"
         // BASE_IMAGE = "${params.ECR_BASE_URL}/laravel-demo-base:latest"
     }
 

@@ -132,11 +132,11 @@ if __name__ == '__main__':
 
     meta_data = {
         ('development', 'ecs_cluster_name'): "ecs-demo-cluster",
-        ('development', 'ecr_repository_url'): "813995029960.dkr.ecr." + AWS_REGION + ".amazonaws.com",
+        ('development', 'ecr_repository_url'): "ACCOUNT_ID.dkr.ecr." + AWS_REGION + ".amazonaws.com",
         ('development', 'container_cpu'): '256',
         ('development', 'container_memory'): '512',
         ('development', 'taskRoleArn'): '',
-        ('development', 'executionRoleArn'): 'arn:aws:iam::813995029960:role/ecsTaskExecutionRole',
+        ('development', 'executionRoleArn'): 'arn:aws:iam::ACCOUNT_ID:role/ecsTaskExecutionRole',
         ('prodution', 'ecs_cluster_name'): "xxx",
         ('prodution', 'ecr_repository_url'): "xxx",
         ('prodution', 'container_cpu'): 512,

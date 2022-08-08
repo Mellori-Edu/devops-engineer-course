@@ -14,8 +14,8 @@ pipeline {
         PROJECT_NAME = "${params.PROJECT_NAME}"
         COMPOSE_PROJECT_NAME= "${params.PROJECT_NAME}${params.ENVIRONMENT}"
         SERVICE_NAME = "${params.SERVICE_NAME}"
-        ECR_LOGIN_COMMAND = "aws ecr get-login-password --region ap-southeast-1 | docker login --username AWS --password-stdin 813995029960.dkr.ecr.ap-southeast-1.amazonaws.com"
-        ECR_ADDRESS = "813995029960.dkr.ecr.ap-southeast-1.amazonaws.com"
+        ECR_LOGIN_COMMAND = "aws ecr get-login-password --region ap-southeast-1 | docker login --username AWS --password-stdin ACCOUNT_ID.dkr.ecr.ap-southeast-1.amazonaws.com"
+        ECR_ADDRESS = "ACCOUNT_ID.dkr.ecr.ap-southeast-1.amazonaws.com"
     }
     options {
         disableResume()
