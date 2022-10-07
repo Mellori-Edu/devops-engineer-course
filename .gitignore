@@ -1,2 +1,5 @@
 env/docker/storage
 __pycache__
+.terraform
+src/vendor
+
