@@ -7,7 +7,7 @@ variable "project_name" {
 }
 
 variable "aws_profile" {
-  default = "lamhaison"
+  default = "YOUR_PROFILE"
 }
 
 variable "aws_region" {

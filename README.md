@@ -87,3 +87,16 @@ docker run -i --rm \
 ```
 Replace ACCOUNT_ID with your real aws account id.
 ```
+
+
+###  Terraform
+```
+cd iac/terraform/environments/dev/common
+
+# To replace YOUR_S3_BUCKET with your S3 bucket in the provider.tf file.
+# To replace YOUR_PROFILE with your aws profile name in the provider.tf and variables.tf file.
+terraform init
+terraform plan
+terraform apply
+
+```
