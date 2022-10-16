@@ -8,4 +8,6 @@ locals {
 resource "aws_ecr_repository" "ecr_repo" {
   for_each = toset(local.ecr_rep_names)
   name     = each.value
+
+  tags = local.common_tags
 }

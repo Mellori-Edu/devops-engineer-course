@@ -44,4 +44,6 @@ resource "aws_codedeploy_deployment_group" "laravel_demo" {
       }
     }
   }
+
+  tags = local.common_tags
 }

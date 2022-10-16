@@ -7,7 +7,7 @@
                 "logDriver": "awslogs",
                 "options":
                 {
-                    "awslogs-group": "/ecs/laravel-demo-dev",
+                    "awslogs-group": "/ecs/lamhaison-dev-laravel-demo",
                     "awslogs-region": "ap-southeast-1",
                     "awslogs-stream-prefix": "ecs"
                 }
@@ -28,7 +28,7 @@
             [
                 "php"
             ],
-            "hostname": "nginx-laravel-demo-dev-mycustomer-dev",
+            "hostname": "lamhaison-dev-laravel-demo-nginx",
             "name": "nginx"
         },
         {
@@ -37,7 +37,7 @@
                 "logDriver": "awslogs",
                 "options":
                 {
-                    "awslogs-group": "/ecs/laravel-demo-dev",
+                    "awslogs-group": "/ecs/lamhaison-dev-laravel-demo",
                     "awslogs-region": "ap-southeast-1",
                     "awslogs-stream-prefix": "ecs"
                 }
@@ -53,7 +53,7 @@
             "memory": 256,
             "memoryReservation": 256,
             "image": "813995029960.dkr.ecr.ap-southeast-1.amazonaws.com/lamhaison-laravel-demo-php:<GIT_TAG>",
-            "hostname": "php-mycustomer-dev-laravel-demo-dev",
+            "hostname": "php",
             "name": "php"
         }
     ],
@@ -61,7 +61,7 @@
     [],
     "executionRoleArn": "arn:aws:iam::813995029960:role/lamhaison-dev-role-ecs-execution",
     "taskRoleArn": "arn:aws:iam::813995029960:role/lamhaison-dev-role-ecs-task",
-    "family": "laravel-demo-dev",
+    "family": "lamhaison-dev-laravel-demo-php",
     "requiresCompatibilities":
     [
         "EC2"

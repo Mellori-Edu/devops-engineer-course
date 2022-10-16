@@ -10,7 +10,7 @@ resource "aws_codebuild_project" "laravel_demo" {
   service_role           = aws_iam_role.ci_id_role["ci"].arn
 
 
-  tags = local.common_tags
+  
 
   artifacts {
     encryption_disabled    = false
@@ -51,6 +51,8 @@ resource "aws_codebuild_project" "laravel_demo" {
     report_build_status = false
     type                = "CODEPIPELINE"
   }
+
+  tags = local.common_tags
 
 
 
