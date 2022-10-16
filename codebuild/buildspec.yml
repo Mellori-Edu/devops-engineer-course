@@ -17,10 +17,10 @@ phases:
         - make build_nginx
     post_build:
         commands:
-        - docker tag laraveldemo_php 813995029960.dkr.ecr.ap-southeast-1.amazonaws.com/laraveldemo-php:${CODEBUILD_RESOLVED_SOURCE_VERSION}
-        - docker tag laraveldemo_nginx 813995029960.dkr.ecr.ap-southeast-1.amazonaws.com/laraveldemo-nginx:${CODEBUILD_RESOLVED_SOURCE_VERSION}
-        - docker push 813995029960.dkr.ecr.ap-southeast-1.amazonaws.com/laraveldemo-php:${CODEBUILD_RESOLVED_SOURCE_VERSION}
-        - docker push 813995029960.dkr.ecr.ap-southeast-1.amazonaws.com/laraveldemo-nginx:${CODEBUILD_RESOLVED_SOURCE_VERSION}
+        - docker tag laraveldemo_php 813995029960.dkr.ecr.ap-southeast-1.amazonaws.com/lamhaison-laravel-demo-php:${CODEBUILD_RESOLVED_SOURCE_VERSION}
+        - docker tag laraveldemo_nginx 813995029960.dkr.ecr.ap-southeast-1.amazonaws.com/lamhaison-laravel-demo-nginx:${CODEBUILD_RESOLVED_SOURCE_VERSION}
+        - docker push 813995029960.dkr.ecr.ap-southeast-1.amazonaws.com/lamhaison-laravel-demo-php:${CODEBUILD_RESOLVED_SOURCE_VERSION}
+        - docker push 813995029960.dkr.ecr.ap-southeast-1.amazonaws.com/lamhaison-laravel-demo-nginx:${CODEBUILD_RESOLVED_SOURCE_VERSION}
         - sed -e "s|<GIT_TAG>|$CODEBUILD_RESOLVED_SOURCE_VERSION|g" ./codedeploy/taskdef_template.json > ./codedeploy/taskdef.json
         - TASK_DEFINITION=`aws ecs register-task-definition --region ap-southeast-1  --cli-input-json file://codedeploy/taskdef.json | jq ".taskDefinition.taskDefinitionArn"`
         - sed -e "s|<TASK_DEFINITION>|$TASK_DEFINITION|g" ./codedeploy/appspec_template.yaml > ./codedeploy/appspec.yaml

@@ -23,7 +23,7 @@
             "cpu": 128,
             "memory": 256,
             "memoryReservation": 256,
-            "image": "813995029960.dkr.ecr.ap-southeast-1.amazonaws.com/laraveldemo-nginx:<GIT_TAG>",
+            "image": "813995029960.dkr.ecr.ap-southeast-1.amazonaws.com/lamhaison-laravel-demo-nginx:<GIT_TAG>",
             "links":
             [
                 "php"
@@ -52,7 +52,7 @@
             ],
             "memory": 256,
             "memoryReservation": 256,
-            "image": "813995029960.dkr.ecr.ap-southeast-1.amazonaws.com/laraveldemo-php:<GIT_TAG>",
+            "image": "813995029960.dkr.ecr.ap-southeast-1.amazonaws.com/lamhaison-laravel-demo-php:<GIT_TAG>",
             "hostname": "php-mycustomer-dev-laravel-demo-dev",
             "name": "php"
         }
@@ -60,7 +60,7 @@
     "placementConstraints":
     [],
     "executionRoleArn": "arn:aws:iam::813995029960:role/lamhaison-dev-role-ecs-execution",
-    "taskRoleArn": "arn:aws:iam::813995029960:role/lamhaison-dev-role-ecs-execution",
+    "taskRoleArn": "arn:aws:iam::813995029960:role/lamhaison-dev-role-ecs-task",
     "family": "laravel-demo-dev",
     "requiresCompatibilities":
     [
