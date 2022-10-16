@@ -61,7 +61,7 @@
     [],
     "executionRoleArn": "arn:aws:iam::813995029960:role/lamhaison-dev-role-ecs-execution",
     "taskRoleArn": "arn:aws:iam::813995029960:role/lamhaison-dev-role-ecs-task",
-    "family": "lamhaison-dev-laravel-demo-php",
+    "family": "lamhaison-dev-laravel-demo",
     "requiresCompatibilities":
     [
         "EC2"
