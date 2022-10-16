@@ -1,5 +1,7 @@
 build_base:
 	docker-compose -p laraveldemo -f docker-compose.yml build --no-cache base
+	
+tag_base:
 	docker tag laraveldemo-base:latest laraveldemo_base:latest 
 
 build_php:
