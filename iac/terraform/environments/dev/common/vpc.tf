@@ -1,8 +1,9 @@
 module "vpc" {
+  count   = var.vpc_created ? 1 : 0
   source  = "terraform-aws-modules/vpc/aws"
   version = "3.1.0"
-  name = "${local.name_prefix}-vpc"
-  cidr = var.vpc_cidr
+  name    = "${local.name_prefix}-vpc"
+  cidr    = var.vpc_cidr
 
   azs              = ["${var.aws_region}a", "${var.aws_region}b", "${var.aws_region}c"]
   private_subnets  = ["10.1.160.0/20", "10.1.176.0/20", "10.1.192.0/20"]

@@ -7,7 +7,7 @@
                 "logDriver": "awslogs",
                 "options":
                 {
-                    "awslogs-group": "/ecs/lamhaison-dev-laravel-demo",
+                    "awslogs-group": "/ecs/PROJECT_NAME-SHORT_ENV-laravel-demo",
                     "awslogs-region": "ap-southeast-1",
                     "awslogs-stream-prefix": "ecs"
                 }
@@ -23,12 +23,12 @@
             "cpu": 128,
             "memory": 256,
             "memoryReservation": 256,
-            "image": "813995029960.dkr.ecr.ap-southeast-1.amazonaws.com/lamhaison-laravel-demo-nginx:<GIT_TAG>",
+            "image": "ACCOUNT_ID.dkr.ecr.ap-southeast-1.amazonaws.com/PROJECT_NAME-laravel-demo-nginx:<GIT_TAG>",
             "links":
             [
                 "php"
             ],
-            "hostname": "lamhaison-dev-laravel-demo-nginx",
+            "hostname": "PROJECT_NAME-SHORT_ENV-laravel-demo-nginx",
             "name": "nginx"
         },
         {
@@ -37,7 +37,7 @@
                 "logDriver": "awslogs",
                 "options":
                 {
-                    "awslogs-group": "/ecs/lamhaison-dev-laravel-demo",
+                    "awslogs-group": "/ecs/PROJECT_NAME-SHORT_ENV-laravel-demo",
                     "awslogs-region": "ap-southeast-1",
                     "awslogs-stream-prefix": "ecs"
                 }
@@ -52,16 +52,16 @@
             ],
             "memory": 256,
             "memoryReservation": 256,
-            "image": "813995029960.dkr.ecr.ap-southeast-1.amazonaws.com/lamhaison-laravel-demo-php:<GIT_TAG>",
+            "image": "ACCOUNT_ID.dkr.ecr.ap-southeast-1.amazonaws.com/PROJECT_NAME-laravel-demo-php:<GIT_TAG>",
             "hostname": "php",
             "name": "php"
         }
     ],
     "placementConstraints":
     [],
-    "executionRoleArn": "arn:aws:iam::813995029960:role/lamhaison-dev-role-ecs-execution",
-    "taskRoleArn": "arn:aws:iam::813995029960:role/lamhaison-dev-role-ecs-task",
-    "family": "lamhaison-dev-laravel-demo",
+    "executionRoleArn": "arn:aws:iam::ACCOUNT_ID:role/PROJECT_NAME-SHORT_ENV-role-ecs-execution",
+    "taskRoleArn": "arn:aws:iam::ACCOUNT_ID:role/PROJECT_NAME-SHORT_ENV-role-ecs-task",
+    "family": "PROJECT_NAME-SHORT_ENV-laravel-demo",
     "requiresCompatibilities":
     [
         "EC2"

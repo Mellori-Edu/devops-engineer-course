@@ -1,9 +1,9 @@
-FROM laraveldemo_base
+FROM laraveldemo-base
 
 ARG BUILD_ENV=development
 
 RUN if [ ${BUILD_ENV} != "prodution" ]; then apt-get update && apt-get install -y procps; fi
-COPY docker-php-ext-* ./env/docker/php-fpm/docker-php-entrypoint /usr/local/bin/
+COPY ./env/docker/php-fpm/docker-php-entrypoint /usr/local/bin/
 ADD ./env/docker/php-fpm/docker.conf /usr/local/etc/php-fpm.d/docker.conf
 ADD ./env/docker/php-fpm/www.conf /usr/local/etc/php-fpm.d/www.conf
 ADD ./env/docker/php-fpm/php.ini $PHP_INI_DIR/php.ini
