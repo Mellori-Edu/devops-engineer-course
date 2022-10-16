@@ -69,12 +69,12 @@ variable "elb_healthcheck_settings" {
 # ECS settings
 variable "ecs_created" {
   type    = bool
-  default = false
+  default = true
 }
 
 variable "ecs_service_created" {
   type = bool
-  default = false
+  default = true
 }
 
 variable "ecs_asg_settings" {
@@ -99,7 +99,7 @@ variable "ecs_asg_settings" {
 
 variable "codedeploy_created" {
   type = string
-  default = false
+  default = true
 }
 variable "codedeploy_policies_arn" {
   type = list(string)
