@@ -142,7 +142,7 @@ resource "aws_cloudwatch_log_group" "laravel_demo" {
 
 # ECS TaskDefinition
 resource "aws_ecs_task_definition" "laravel_demo" {
-  count                    = local.ecs_created ? 1 : 0
+  count                    = local.ecs_service_created ? 1 : 0
   family                   = "${local.name_prefix}-laraveldemo"
   requires_compatibilities = ["EC2"]
   network_mode             = "bridge"
@@ -170,7 +170,7 @@ resource "aws_ecs_task_definition" "laravel_demo" {
 
 # ECS Service
 resource "aws_ecs_service" "laravel_demo" {
-  count           = local.ecs_created ? 1 : 0
+  count           = local.ecs_service_created ? 1 : 0
   name            = "${local.name_prefix}-laraveldemo"
   cluster         = aws_ecs_cluster.ecs_cluster[0].id
   task_definition = aws_ecs_task_definition.laravel_demo[0].arn
