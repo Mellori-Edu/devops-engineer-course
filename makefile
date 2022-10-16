@@ -6,7 +6,7 @@ build_base:
 tag_base_ci:
 	docker tag laraveldemo_base:latest laraveldemo-base:latest 
 build_base_ci:
-	make make_build_base
+	make build_base
 	make tag_base_ci
 	
 build_php:
