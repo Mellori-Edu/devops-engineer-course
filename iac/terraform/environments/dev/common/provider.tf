@@ -8,9 +8,9 @@ terraform {
 
   # Saving state on S3 Remote state.
   backend "s3" {
-    bucket                  = "lamhaison-testing"
+    bucket                  = "PROJECT_NAME-testing"
     key                     = "common/terraform.state"
-    profile                 = "lamhaison"
+    profile                 = "PROJECT_NAME"
     region                  = "ap-southeast-1"
     skip_metadata_api_check = true
   }
@@ -18,6 +18,6 @@ terraform {
 }
 
 provider "aws" {
-  profile = "lamhaison"
+  profile = "PROJECT_NAME"
   region  = "ap-southeast-1"
 }
