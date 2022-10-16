@@ -135,7 +135,7 @@ resource "aws_autoscaling_group" "asg-ecs-cluster" {
 }
 
 resource "aws_cloudwatch_log_group" "laravel_demo" {
-  name = "${local.name_prefix}-laravel-demo"
+  name = "/ecs/${local.name_prefix}-laravel-demo"
   tags = local.common_tags
 }
 
