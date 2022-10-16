@@ -59,8 +59,8 @@
     ],
     "placementConstraints":
     [],
-    "executionRoleArn": "arn:aws:iam::ACCOUNT_ID:role/ecsTaskExecutionRole",
-    "taskRoleArn": "arn:aws:iam::ACCOUNT_ID:role/ecsTaskExecutionRole",
+    "executionRoleArn": "arn:aws:iam::813995029960:role/lamhaison-dev-role-ecs-execution",
+    "taskRoleArn": "arn:aws:iam::813995029960:role/lamhaison-dev-role-ecs-execution",
     "family": "laravel-demo-dev",
     "requiresCompatibilities":
     [
