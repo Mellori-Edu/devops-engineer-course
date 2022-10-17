@@ -1,9 +1,9 @@
 variable "env" {
-  default = "dev"
+  default = "SHORT_ENV"
 }
 
 variable "project_name" {
-  default = "lamhaison"
+  default = "PROJECT_NAME"
 }
 
 variable "aws_profile" {
@@ -19,7 +19,7 @@ variable "aws_region" {
 
 variable "vpc_created" {
   type    = bool
-  default = true
+  default = false
 }
 
 variable "vpc_cidr" {
