@@ -17,14 +17,14 @@ use App\Http\Controllers\ImageController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('image-upload');
+    // return view('welcome');
 });
 
 Route::get('/healthcheck', function(){
     Log::debug('Accessing to the healthcheck url');
     return ["app_name"=>config("app.name") ,"env"=>config("app.env"), "version" => "0.0.4"];
 });
-
 
 
 Route::get('image-upload', [ImageController::class, 'index'])->name('image.index');
