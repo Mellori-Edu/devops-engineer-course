@@ -100,3 +100,12 @@ terraform plan
 terraform apply
 
 ```
+
+
+### Settings
+* To use the file example/buildspect_example.yml to build the file codebuild/buildspect.yml.
+* To use the file example/taskdef_template_example.json to build the file codeploy/taskdef_template.json.
+* To use the file example/terraform_provider_example.tf to build the file iac/terraform/environments/dev/common/provider.tf
+* To use the file example/terraform_variables_example.tf to build the file iac/terraform/environments/dev/common/variables.tf
+* To use the file example/ecs_example.tpl to build the file iac/terraform/environments/dev/common/scripts/ecs.tpl
+
