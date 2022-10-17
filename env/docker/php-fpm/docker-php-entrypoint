@@ -20,8 +20,9 @@ else
 	php artisan config:cache
 fi
 
-#echo "Migrate the database with force"
-#php artisan migrate --force
+
+echo "Migrate the database with force"
+php artisan migrate --force
 
 
 # first arg is `-f` or `--some-option`
