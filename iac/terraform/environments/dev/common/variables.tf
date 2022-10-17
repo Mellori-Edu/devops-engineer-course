@@ -158,3 +158,9 @@ variable "codepipeline_created" {
   type = bool
   default = false
 }
+
+
+variable "cloudfront_created" {
+  type = bool
+  default = true
+}
