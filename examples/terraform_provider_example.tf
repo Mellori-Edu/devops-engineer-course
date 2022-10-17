@@ -8,9 +8,15 @@ terraform {
 
   # Saving state on S3 Remote state.
   backend "s3" {
-    bucket                  = "lamhaison-testing"
+    # What is your bucket name to save to save the terraform state
+    bucket                  = "BUCKET_NAME"
+
     key                     = "common/terraform.state"
-    profile                 = "lamhaison"
+
+    # Name of your profile
+    profile                 = "PROFILE_NAME"
+
+    # Region. For example is region singapore.
     region                  = "ap-southeast-1"
     skip_metadata_api_check = true
   }
@@ -18,6 +24,10 @@ terraform {
 }
 
 provider "aws" {
-  profile = "lamhaison"
+
+  # Name of your profile
+  profile = "PROFILE_NAME"
+
+  # Region. For example is region singapore.
   region  = "ap-southeast-1"
 }

@@ -1,5 +1,5 @@
 resource "aws_codebuild_project" "laravel_demo" {
-  count = var.codebuild_created ? 1 : 0
+  count                  = var.codebuild_created ? 1 : 0
   name                   = "${local.name_prefix}-laravel-demo"
   description            = "${local.name_prefix}-laravel-demo"
   badge_enabled          = false
@@ -10,7 +10,7 @@ resource "aws_codebuild_project" "laravel_demo" {
   service_role           = aws_iam_role.ci_id_role["ci"].arn
 
 
-  
+
 
   artifacts {
     encryption_disabled    = false

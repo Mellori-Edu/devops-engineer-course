@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 
 use Illuminate\Support\Facades\Log;
+
+use App\Http\Controllers\ImageController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,10 +17,15 @@ use Illuminate\Support\Facades\Log;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('image-upload');
+    // return view('welcome');
 });
 
 Route::get('/healthcheck', function(){
     Log::debug('Accessing to the healthcheck url');
     return ["app_name"=>config("app.name") ,"env"=>config("app.env"), "version" => "0.0.4"];
 });
+
+
+Route::get('image-upload', [ImageController::class, 'index'])->name('image.index');
+Route::post('image-upload', [ImageController::class, 'upload'])->name('image.upload');

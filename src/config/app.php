@@ -56,6 +56,8 @@ return [
 
     'asset_url' => env('ASSET_URL', null),
 
+    'cloudfront_url' => env('AWS_CLOUDFRONT_DOMAIN', null),
+
     /*
     |--------------------------------------------------------------------------
     | Application Timezone

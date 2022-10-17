@@ -32,3 +32,18 @@ up:
 
 down:
 	docker-compose -p laraveldemo -f docker-compose.yml down
+
+
+# Delete all objects in the s3 bucket
+# Delete all cloudwatch logs group
+destroy_infra:
+
+	cd iac/terraform/environments/dev/common && \
+		terraform apply -var="vpc_created=false" -var="cloudfront_created=false"
+
+
+create_infra:
+	cd iac/terraform/environments/dev/common && \
+		terraform init && \
+		terraform plan && \
+		terraform apply
