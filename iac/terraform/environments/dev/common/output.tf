@@ -13,3 +13,7 @@ output "cloudfront_domain" {
 output "s3_static_bucket" {
   value = aws_s3_bucket.this.id
 }
+
+output "db_connection" {
+  value = local.db_created ? aws_db_instance.default[0].endpoint : null
+}

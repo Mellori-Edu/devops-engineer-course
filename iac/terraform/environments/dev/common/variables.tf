@@ -73,7 +73,7 @@ variable "ecs_created" {
 }
 
 variable "ecs_service_created" {
-  type = bool
+  type    = bool
   default = true
 }
 
@@ -98,7 +98,7 @@ variable "ecs_asg_settings" {
 # CodeDeploy
 
 variable "codedeploy_created" {
-  type = string
+  type    = string
   default = true
 }
 variable "codedeploy_policies_arn" {
@@ -149,18 +149,24 @@ variable "deployment_type" {
 
 
 variable "codebuild_created" {
-  type = bool
+  type    = bool
   default = true
 }
 
 
 variable "codepipeline_created" {
-  type = bool
+  type    = bool
   default = false
 }
 
 
 variable "cloudfront_created" {
-  type = bool
+  type    = bool
+  default = true
+}
+
+
+variable "db_created" {
+  type    = bool
   default = true
 }

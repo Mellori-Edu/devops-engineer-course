@@ -52,21 +52,21 @@ resource "aws_cloudfront_distribution" "this" {
     origin_id   = aws_s3_bucket.this.id
     origin_path = ""
     s3_origin_config {
-        origin_access_identity = aws_cloudfront_origin_access_identity.this.cloudfront_access_identity_path
-    }      
+      origin_access_identity = aws_cloudfront_origin_access_identity.this.cloudfront_access_identity_path
+    }
   }
 
   enabled             = var.cloudfront_created
   is_ipv6_enabled     = true
   comment             = "${local.name_prefix}-static"
   default_root_object = "index.html"
- # aliases             = var.aliases
- viewer_certificate {
-    cloudfront_default_certificate  = true
+  # aliases             = var.aliases
+  viewer_certificate {
+    cloudfront_default_certificate = true
     # Using when using custom domain.
     # cloudfront_default_certificate  = false
     # acm_certificate_arn             = var.acm_certificate_arn
-    ssl_support_method              = "sni-only"
+    # ssl_support_method = "sni-only"
   }
   default_cache_behavior {
     allowed_methods  = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
@@ -89,15 +89,15 @@ resource "aws_cloudfront_distribution" "this" {
 
   custom_error_response {
     error_caching_min_ttl = 60
-    error_code            = 403 
-    response_code         = 200 
-    response_page_path    = "/index.html" 
-  }   
+    error_code            = 403
+    response_code         = 200
+    response_page_path    = "/index.html"
+  }
   custom_error_response {
     error_caching_min_ttl = 60
-    error_code            = 404 
-    response_code         = 200 
-    response_page_path    = "/index.html" 
+    error_code            = 404
+    response_code         = 200
+    response_page_path    = "/index.html"
   }
 
   price_class = "PriceClass_200"
