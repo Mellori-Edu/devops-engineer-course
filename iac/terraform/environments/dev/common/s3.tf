@@ -47,6 +47,9 @@ resource "aws_s3_bucket_public_access_block" "this" {
 }
 
 resource "aws_cloudfront_distribution" "this" {
+
+  count = var.cloudfront_created ? 1 : 0
+
   origin {
     domain_name = aws_s3_bucket.this.bucket_regional_domain_name
     origin_id   = aws_s3_bucket.this.id

@@ -7,7 +7,7 @@ output "elb_dns_domain" {
 }
 
 output "cloudfront_domain" {
-  value = var.cloudfront_created ? aws_cloudfront_distribution.this.domain_name : null
+  value = var.cloudfront_created ? aws_cloudfront_distribution.this[0].domain_name : null
 }
 
 output "s3_static_bucket" {
