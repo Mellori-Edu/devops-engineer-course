@@ -17,3 +17,7 @@ output "s3_static_bucket" {
 output "db_connection" {
   value = local.db_created ? aws_db_instance.default[0].endpoint : null
 }
+
+output "ecr_repos" {
+  value = local.ecs_service_created ? [for repo in aws_ecr_repository.ecr_repo: repo.repository_url] : null
+}

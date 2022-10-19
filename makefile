@@ -1,3 +1,7 @@
+export AWS_PROFILE :=lamhaison
+export AWS_REGION  :=ap-southeast-1
+export TF_PATH := iac/terraform/environments/dev/common
+
 # Docker Compose version v2.10.2
 build_base:
 	docker-compose -p laraveldemo -f docker-compose.yml build --no-cache base
@@ -34,16 +38,17 @@ down:
 	docker-compose -p laraveldemo -f docker-compose.yml down
 
 
-# Delete all objects in the s3 bucket
-# Delete all cloudwatch logs group
+# Delete all objects in the s3 bucket.
+# Delete all cloudwatch logs group.
+# Delete all images in RCR repos.
 destroy_infra:
-
-	cd iac/terraform/environments/dev/common && \
+	cd $(TF_PATH) && \
 		terraform apply -var="vpc_created=false" -var="cloudfront_created=false"
 
-
 create_infra:
-	cd iac/terraform/environments/dev/common && \
+	cd $(TF_PATH) && \
 		terraform init && \
 		terraform plan && \
 		terraform apply
+	
+
