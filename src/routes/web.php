@@ -24,7 +24,7 @@ Route::get('/', function () {
 Route::get('/healthcheck', function(){
     // Log::debug('Accessing to the healthcheck url');
 
-    Log::error('fake error logs);
+    Log::error('fake error logs');
     return ["app_name"=>config("app.name") ,"env"=>config("app.env"), "version" => "0.0.5"];
 });
 
