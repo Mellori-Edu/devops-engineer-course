@@ -29,6 +29,12 @@ variable "vpc_cidr" {
 
 
 # Ec2 settings
+
+variable "ec2_created" {
+  type    = string
+  default = false
+}
+
 variable "ami_id" {
   type    = string
   default = "ami-xxxx"

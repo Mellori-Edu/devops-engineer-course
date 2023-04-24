@@ -1,7 +1,3 @@
-variable "ec2_created" {
-  type    = string
-  default = false
-}
 resource "aws_instance" "demo" {
   count                   = var.ec2_created ? 1 : 0
   ami                     = var.ami_id
