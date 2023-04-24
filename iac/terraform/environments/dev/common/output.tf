@@ -11,7 +11,7 @@ output "cloudfront_domain" {
 }
 
 output "s3_static_bucket" {
-  value = aws_s3_bucket.this.id
+  value = var.cloudfront_created ? aws_s3_bucket.this[0].id : null
 }
 
 output "db_connection" {
