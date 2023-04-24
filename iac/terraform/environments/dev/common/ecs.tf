@@ -135,6 +135,7 @@ resource "aws_autoscaling_group" "asg-ecs-cluster" {
 }
 
 resource "aws_cloudwatch_log_group" "laravel_demo" {
+  count                    = local.ecs_service_created ? 1 : 0
   name = "/ecs/${local.name_prefix}-laravel-demo"
   tags = local.common_tags
 }
@@ -174,7 +175,7 @@ resource "aws_ecs_service" "laravel_demo" {
   name            = "${local.name_prefix}-laravel-demo"
   cluster         = aws_ecs_cluster.ecs_cluster[0].id
   task_definition = aws_ecs_task_definition.laravel_demo[0].arn
-  desired_count   = 1
+  desired_count   = 2
   launch_type     = "EC2"
   propagate_tags  = "SERVICE"
   tags            = local.common_tags

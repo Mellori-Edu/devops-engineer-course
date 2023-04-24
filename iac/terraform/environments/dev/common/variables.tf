@@ -1,5 +1,5 @@
 variable "env" {
-  default = "dev"
+  default = "SHORT_ENV"
 }
 
 variable "project_name" {
