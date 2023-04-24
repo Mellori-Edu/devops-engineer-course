@@ -41,6 +41,11 @@ down:
 # Delete all objects in the s3 bucket.
 # Delete all cloudwatch logs group.
 # Delete all images in RCR repos.
+
+destroy_infra_all:
+	cd $(TF_PATH) && \
+		terraform destroy
+		
 destroy_infra:
 	cd $(TF_PATH) && \
 		terraform apply -var="vpc_created=false" -var="cloudfront_created=false"
