@@ -6,9 +6,6 @@ variable "project_name" {
   default = "PROJECT_NAME"
 }
 
-variable "aws_profile" {
-  default = "YOUR_PROFILE"
-}
 
 variable "aws_region" {
   default = "ap-southeast-1"
@@ -19,7 +16,7 @@ variable "aws_region" {
 
 variable "vpc_created" {
   type    = bool
-  default = false
+  default = true
 }
 
 variable "vpc_cidr" {
@@ -32,7 +29,7 @@ variable "vpc_cidr" {
 
 variable "ec2_created" {
   type    = string
-  default = false
+  default = true
 }
 
 variable "ami_id" {

@@ -8,5 +8,9 @@ locals {
 resource "aws_ecr_repository" "ecr_repo" {
   for_each = local.ecs_service_created ? toset(local.ecr_rep_names) : []
   name     = each.value
+<<<<<<< HEAD
+=======
+
+>>>>>>> lamhaison/main
   tags = local.common_tags
 }

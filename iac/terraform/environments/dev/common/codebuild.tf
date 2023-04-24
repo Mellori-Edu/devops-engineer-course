@@ -10,6 +10,11 @@ resource "aws_codebuild_project" "laravel_demo" {
   service_role           = aws_iam_role.ci_id_role["ci"].arn
 
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> lamhaison/main
   artifacts {
     encryption_disabled    = false
     name                   = "${local.name_prefix}-laravel-demo"

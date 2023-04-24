@@ -40,15 +40,20 @@ down:
 
 # Delete all objects in the s3 bucket.
 # Delete all cloudwatch logs group.
-# Delete all images in RCR repos.
+# Delete all images in ECR repos.
 
 destroy_infra_all:
 	cd $(TF_PATH) && \
 		terraform destroy
-		
 destroy_infra:
 	cd $(TF_PATH) && \
-		terraform apply -var="vpc_created=false" -var="cloudfront_created=false"
+		terraform apply \
+			-var="vpc_created=false" -var="cloudfront_created=false" \
+			-var="elb_created=false" -var="ecs_created=false" \
+			-var="ecs_service_created=false" -var="codedeploy_created=false" \
+			-var="codebuild_created=false" -var="codebuild_created=false" \
+			-var="codepipeline_created=false" -var="cloudfront_created=false" \
+			-var="db_created=false" -var="ec2_created=false"
 
 create_infra:
 	cd $(TF_PATH) && \
