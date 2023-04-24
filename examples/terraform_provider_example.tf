@@ -13,19 +13,18 @@ terraform {
 
     key                     = "common/terraform.state"
 
-    # Name of your profile
+    # Name of your profile (You can skip the profile name if using with ec2 instance profile)
     profile                 = "PROFILE_NAME"
 
     # Region. For example is region singapore.
     region                  = "ap-southeast-1"
-    skip_metadata_api_check = true
   }
 
 }
 
 provider "aws" {
 
-  # Name of your profile
+  # Name of your profile (You can skip the profile name if using with ec2 instance profile)
   profile = "PROFILE_NAME"
 
   # Region. For example is region singapore.

@@ -6,20 +6,15 @@ variable "project_name" {
   default = "PROJECT_NAME"
 }
 
-variable "aws_profile" {
-  default = "YOUR_PROFILE"
-}
-
 variable "aws_region" {
   default = "ap-southeast-1"
 }
-
 
 # VPC settings
 
 variable "vpc_created" {
   type    = bool
-  default = false
+  default = true
 }
 
 variable "vpc_cidr" {
@@ -27,6 +22,11 @@ variable "vpc_cidr" {
   default = "10.1.0.0/16"
 }
 
+
+variable "ec2_created" {
+  type    = string
+  default = true
+}
 
 # Ec2 settings
 variable "ami_id" {
@@ -84,7 +84,7 @@ variable "ecs_asg_settings" {
     max_size         = 2
     desized_capacity = 2
 
-    ami_id        = "ami-0920ef3608aa17d63"
+    ami_id        = "ami-0996cfb3acf118b24"
     instance_type = "t3.small"
 
     ebs_volume_size = 30,
@@ -156,7 +156,7 @@ variable "codebuild_created" {
 
 variable "codepipeline_created" {
   type    = bool
-  default = false
+  default = true
 }
 
 
