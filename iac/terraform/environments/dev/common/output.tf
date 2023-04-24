@@ -11,9 +11,13 @@ output "cloudfront_domain" {
 }
 
 output "s3_static_bucket" {
-  value = aws_s3_bucket.this.id
+  value = var.cloudfront_created ? aws_s3_bucket.this[0].id : null
 }
 
 output "db_connection" {
   value = local.db_created ? aws_db_instance.default[0].endpoint : null
+}
+
+output "ecr_repos" {
+  value = local.ecs_service_created ? [for repo in aws_ecr_repository.ecr_repo: repo.repository_url] : null
 }
