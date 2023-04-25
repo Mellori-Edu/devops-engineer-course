@@ -10,7 +10,6 @@ variable "aws_region" {
   default = "ap-southeast-1"
 }
 
-
 # VPC settings
 
 variable "vpc_created" {

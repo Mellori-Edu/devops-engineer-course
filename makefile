@@ -1,6 +1,11 @@
 export AWS_PROFILE :=lamhaison
 export AWS_REGION  :=ap-southeast-1
+export PROJECT_NAME :=lamhaison-2023
+export ACCOUNT_ID :=813995029960
+export SHORT_ENV :=dev
+export TEMPLATE_PATH :=examples
 export TF_PATH := iac/terraform/environments/dev/common
+export BUCKET_NAME:=lamhaison-testing
 
 # Docker Compose version v2.10.2
 build_base:
@@ -60,5 +65,38 @@ create_infra:
 		terraform init && \
 		terraform plan && \
 		terraform apply
-	
+
+
+generate_settings:
+	cat ${TEMPLATE_PATH}/buildspec_example.yml \
+		| sed "s/SHORT_ENV/${SHORT_ENV}/; s/PROJECT_NAME/${PROJECT_NAME}/; s/ACCOUNT_ID/${ACCOUNT_ID}/; s/AWS_REGION/${AWS_REGION}/" \
+		> "codebuild/buildspec.yml"
+
+	cat ${TEMPLATE_PATH}/taskdef_template_example.json \
+		| sed "s/SHORT_ENV/${SHORT_ENV}/; s/PROJECT_NAME/${PROJECT_NAME}/; s/ACCOUNT_ID/${ACCOUNT_ID}/; s/AWS_REGION/${AWS_REGION}/" \
+		> "codedeploy/taskdef_template.json"
+
+
+	cat ${TEMPLATE_PATH}/terraform_provider_example.tf \
+		| sed "s/SHORT_ENV/${SHORT_ENV}/; s/PROJECT_NAME/${PROJECT_NAME}/; s/ACCOUNT_ID/${ACCOUNT_ID}/; s/AWS_REGION/${AWS_REGION}/" \
+		| sed "s/BUCKET_NAME/${BUCKET_NAME}/; s/AWS_PROFILE/${AWS_PROFILE}/" \
+		> "${TF_PATH}/provider.tf"
+
+	cat ${TEMPLATE_PATH}/terraform_variables_example.tf \
+		| sed "s/SHORT_ENV/${SHORT_ENV}/; s/PROJECT_NAME/${PROJECT_NAME}/; s/ACCOUNT_ID/${ACCOUNT_ID}/; s/AWS_REGION/${AWS_REGION}/" \
+		| sed "s/BUCKET_NAME/${BUCKET_NAME}/; s/AWS_PROFILE/${AWS_PROFILE}/" \
+		> "${TF_PATH}/variables.tf"
+
+
+	cat ${TEMPLATE_PATH}/ecs_example.tpl \
+		| sed "s/SHORT_ENV/${SHORT_ENV}/; s/PROJECT_NAME/${PROJECT_NAME}/; s/ACCOUNT_ID/${ACCOUNT_ID}/; s/AWS_REGION/${AWS_REGION}/" \
+		| sed "s/BUCKET_NAME/${BUCKET_NAME}/; s/AWS_PROFILE/${AWS_PROFILE}/" \
+		> "${TF_PATH}/scripts/ecs.tpl"
+
+
+
+
+
+
+
 

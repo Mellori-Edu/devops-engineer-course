@@ -14,10 +14,10 @@ terraform {
     key                     = "common/terraform.state"
 
     # Name of your profile (You can skip the profile name if using with ec2 instance profile)
-    profile                 = "PROFILE_NAME"
+    profile                 = "AWS_PROFILE"
 
     # Region. For example is region singapore.
-    region                  = "ap-southeast-1"
+    region                  = "AWS_REGION"
   }
 
 }
@@ -25,8 +25,8 @@ terraform {
 provider "aws" {
 
   # Name of your profile (You can skip the profile name if using with ec2 instance profile)
-  profile = "PROFILE_NAME"
+  profile = "AWS_PROFILE"
 
   # Region. For example is region singapore.
-  region  = "ap-southeast-1"
+  region  = "AWS_REGION"
 }

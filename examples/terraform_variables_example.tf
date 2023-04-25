@@ -7,7 +7,7 @@ variable "project_name" {
 }
 
 variable "aws_region" {
-  default = "ap-southeast-1"
+  default = "AWS_REGION"
 }
 
 # VPC settings
