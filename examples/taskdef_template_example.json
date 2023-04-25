@@ -8,7 +8,7 @@
                 "options":
                 {
                     "awslogs-group": "/ecs/PROJECT_NAME-SHORT_ENV-laravel-demo",
-                    "awslogs-region": "ap-southeast-1",
+                    "awslogs-region": "AWS_REGION",
                     "awslogs-stream-prefix": "ecs"
                 }
             },
@@ -23,7 +23,7 @@
             "cpu": 128,
             "memory": 256,
             "memoryReservation": 256,
-            "image": "ACCOUNT_ID.dkr.ecr.ap-southeast-1.amazonaws.com/PROJECT_NAME-laravel-demo-nginx:<GIT_TAG>",
+            "image": "ACCOUNT_ID.dkr.ecr.AWS_REGION.amazonaws.com/PROJECT_NAME-laravel-demo-nginx:<GIT_TAG>",
             "links":
             [
                 "php"
@@ -38,7 +38,7 @@
                 "options":
                 {
                     "awslogs-group": "/ecs/PROJECT_NAME-SHORT_ENV-laravel-demo",
-                    "awslogs-region": "ap-southeast-1",
+                    "awslogs-region": "AWS_REGION",
                     "awslogs-stream-prefix": "ecs"
                 }
             },
@@ -52,7 +52,7 @@
             ],
             "memory": 256,
             "memoryReservation": 256,
-            "image": "ACCOUNT_ID.dkr.ecr.ap-southeast-1.amazonaws.com/PROJECT_NAME-laravel-demo-php:<GIT_TAG>",
+            "image": "ACCOUNT_ID.dkr.ecr.AWS_REGION.amazonaws.com/PROJECT_NAME-laravel-demo-php:<GIT_TAG>",
             "hostname": "php",
             "name": "php"
         }

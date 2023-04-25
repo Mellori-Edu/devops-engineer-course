@@ -1,3 +1,4 @@
+# This is an example to build the file buildspect.yml
 version: 0.2
 phases:
     install:
@@ -9,7 +10,7 @@ phases:
         - yum -y install zip awscli jq
         - docker-compose --version
         - printenv
-        - aws ecr get-login-password --region ap-southeast-1 | docker login --username AWS --password-stdin 813995029960.dkr.ecr.ap-southeast-1.amazonaws.com
+        - aws ecr get-login-password --region ap-southeast-1 | docker login --username AWS --password-stdin 813995029960.dkr.ecr.AWS_REGION.amazonaws.com
     build:
         commands:
         - make build_base_ci
@@ -17,10 +18,10 @@ phases:
         - make build_nginx
     post_build:
         commands:
-        - docker tag laraveldemo_php 813995029960.dkr.ecr.ap-southeast-1.amazonaws.com/lamhaison-laravel-demo-php:${CODEBUILD_RESOLVED_SOURCE_VERSION}
-        - docker tag laraveldemo_nginx 813995029960.dkr.ecr.ap-southeast-1.amazonaws.com/lamhaison-laravel-demo-nginx:${CODEBUILD_RESOLVED_SOURCE_VERSION}
-        - docker push 813995029960.dkr.ecr.ap-southeast-1.amazonaws.com/lamhaison-laravel-demo-php:${CODEBUILD_RESOLVED_SOURCE_VERSION}
-        - docker push 813995029960.dkr.ecr.ap-southeast-1.amazonaws.com/lamhaison-laravel-demo-nginx:${CODEBUILD_RESOLVED_SOURCE_VERSION}
+        - docker tag laraveldemo_php 813995029960.dkr.ecr.ap-southeast-1.amazonaws.com/lamhaison-2023-dev-laravel-demo-php:${CODEBUILD_RESOLVED_SOURCE_VERSION}
+        - docker tag laraveldemo_nginx 813995029960.dkr.ecr.ap-southeast-1.amazonaws.com/lamhaison-2023-dev-laravel-demo-nginx:${CODEBUILD_RESOLVED_SOURCE_VERSION}
+        - docker push 813995029960.dkr.ecr.ap-southeast-1.amazonaws.com/lamhaison-2023-dev-laravel-demo-php:${CODEBUILD_RESOLVED_SOURCE_VERSION}
+        - docker push 813995029960.dkr.ecr.ap-southeast-1.amazonaws.com/lamhaison-2023-dev-laravel-demo-nginx:${CODEBUILD_RESOLVED_SOURCE_VERSION}
         - sed -e "s|<GIT_TAG>|$CODEBUILD_RESOLVED_SOURCE_VERSION|g" ./codedeploy/taskdef_template.json > ./codedeploy/taskdef.json
         - TASK_DEFINITION=`aws ecs register-task-definition --region ap-southeast-1  --cli-input-json file://codedeploy/taskdef.json | jq ".taskDefinition.taskDefinitionArn"`
         - sed -e "s|<TASK_DEFINITION>|$TASK_DEFINITION|g" ./codedeploy/appspec_template.yaml > ./codedeploy/appspec.yaml

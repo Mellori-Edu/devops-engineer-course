@@ -8,7 +8,7 @@ variable "project_name" {
 
 
 variable "aws_region" {
-  default = "ap-southeast-1"
+  default = "AWS_REGION"
 }
 
 
@@ -34,7 +34,7 @@ variable "ec2_created" {
 
 variable "ami_id" {
   type    = string
-  default = "ami-xxxx"
+  default = "AWS_AMI_ID"
 }
 
 variable "instance_type" {

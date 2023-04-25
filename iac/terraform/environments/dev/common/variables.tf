@@ -10,7 +10,6 @@ variable "aws_region" {
   default = "ap-southeast-1"
 }
 
-
 # VPC settings
 
 variable "vpc_created" {
@@ -32,7 +31,7 @@ variable "ec2_created" {
 # Ec2 settings
 variable "ami_id" {
   type    = string
-  default = "ami-xxxx"
+  default = "ami-0409b67925493d8b8"
 }
 
 variable "instance_type" {

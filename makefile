@@ -1,6 +1,14 @@
-export AWS_PROFILE :=lamhaison
+export AWS_PROFILE :=
 export AWS_REGION  :=ap-southeast-1
+export PROJECT_NAME :=lamhaison-2023
+export ACCOUNT_ID :=813995029960
+export SHORT_ENV :=dev
+export TEMPLATE_PATH :=examples
 export TF_PATH := iac/terraform/environments/dev/common
+export BUCKET_NAME:=lamhaison-testing
+
+# Running list_ami_aws_default to get that information
+export AWS_AMI_ID :=ami-0409b67925493d8b8
 
 # Docker Compose version v2.10.2
 build_base:
@@ -60,5 +68,33 @@ create_infra:
 		terraform init && \
 		terraform plan && \
 		terraform apply
-	
 
+list_ami_aws_default:
+	 aws ec2 describe-images \
+	 	--filters 'Name=architecture,Values=x86_64' 'Name=virtualization-type,Values=hvm' 'Name=root-device-type,Values=ebs' 'Name=block-device-mapping.volume-type,Values=gp2' 'Name=ena-support,Values=true' 'Name=owner-alias,Values=amazon' 'Name=name,Values=*amzn2-ami-hvm-2.0.????????.?-x86_64-gp2' \
+	 	--query 'Images[*].[ImageId,Name,Description]' --output table
+
+generate_settings:
+	cat ${TEMPLATE_PATH}/buildspec_example.yml \
+		| sed "s/SHORT_ENV/${SHORT_ENV}/; s/PROJECT_NAME/${PROJECT_NAME}/; s/ACCOUNT_ID/${ACCOUNT_ID}/; s/AWS_REGION/${AWS_REGION}/" \
+		> "codebuild/buildspec.yml"
+
+	cat ${TEMPLATE_PATH}/taskdef_template_example.json \
+		| sed "s/SHORT_ENV/${SHORT_ENV}/; s/PROJECT_NAME/${PROJECT_NAME}/; s/ACCOUNT_ID/${ACCOUNT_ID}/; s/AWS_REGION/${AWS_REGION}/" \
+		> "codedeploy/taskdef_template.json"
+
+
+	cat ${TEMPLATE_PATH}/terraform_provider_example.tf \
+		| sed "s/SHORT_ENV/${SHORT_ENV}/; s/PROJECT_NAME/${PROJECT_NAME}/; s/ACCOUNT_ID/${ACCOUNT_ID}/; s/AWS_REGION/${AWS_REGION}/" \
+		| sed "s/BUCKET_NAME/${BUCKET_NAME}/; s/AWS_PROFILE/${AWS_PROFILE}/" \
+		> "${TF_PATH}/provider.tf"
+
+	cat ${TEMPLATE_PATH}/terraform_variables_example.tf \
+		| sed "s/SHORT_ENV/${SHORT_ENV}/; s/PROJECT_NAME/${PROJECT_NAME}/; s/ACCOUNT_ID/${ACCOUNT_ID}/; s/AWS_REGION/${AWS_REGION}/" \
+		| sed "s/BUCKET_NAME/${BUCKET_NAME}/; s/AWS_PROFILE/${AWS_PROFILE}/; s/AWS_AMI_ID/${AWS_AMI_ID}/" \
+		> "${TF_PATH}/variables.tf"
+
+	cat ${TEMPLATE_PATH}/ecs_example.tpl \
+		| sed "s/SHORT_ENV/${SHORT_ENV}/; s/PROJECT_NAME/${PROJECT_NAME}/; s/ACCOUNT_ID/${ACCOUNT_ID}/; s/AWS_REGION/${AWS_REGION}/" \
+		| sed "s/BUCKET_NAME/${BUCKET_NAME}/; s/AWS_PROFILE/${AWS_PROFILE}/" \
+		> "${TF_PATH}/scripts/ecs.tpl"
