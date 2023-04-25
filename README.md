@@ -85,7 +85,10 @@ docker run -i --rm \
 
 ### CI, CD
 ```
-Replace ACCOUNT_ID with your real aws account id.
+Replace ACCOUNT_ID with your real value.
+Replace PROJECT_NAME with your real value.
+Pleace SHORT_ENV with the your real value.
+Please AWS_REGION with your real value.
 ```
 
 
@@ -103,9 +106,18 @@ terraform apply
 
 
 ### Settings
+#### Manually
 * To use the file example/buildspect_example.yml to build the file codebuild/buildspect.yml.
 * To use the file example/taskdef_template_example.json to build the file codeploy/taskdef_template.json.
 * To use the file example/terraform_provider_example.tf to build the file iac/terraform/environments/dev/common/provider.tf
+  - Please update your ami_id for you region in iac/terraform/environments/dev/common/variables.tf . Firt running `make list_ami_aws_default` to get list aws aim and choose a item"
 * To use the file example/terraform_variables_example.tf to build the file iac/terraform/environments/dev/common/variables.tf
 * To use the file example/ecs_example.tpl to build the file iac/terraform/environments/dev/common/scripts/ecs.tpl
+
+#### Using scripts
+```
+make generate_settings
+```
+
+
 

@@ -31,7 +31,7 @@ variable "ec2_created" {
 # Ec2 settings
 variable "ami_id" {
   type    = string
-  default = "ami-xxxx"
+  default = "AWS_AMI_ID"
 }
 
 variable "instance_type" {
