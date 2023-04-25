@@ -98,14 +98,3 @@ generate_settings:
 		| sed "s/SHORT_ENV/${SHORT_ENV}/; s/PROJECT_NAME/${PROJECT_NAME}/; s/ACCOUNT_ID/${ACCOUNT_ID}/; s/AWS_REGION/${AWS_REGION}/" \
 		| sed "s/BUCKET_NAME/${BUCKET_NAME}/; s/AWS_PROFILE/${AWS_PROFILE}/" \
 		> "${TF_PATH}/scripts/ecs.tpl"
-
-
-
-
-
-
-
-
-
-
-
