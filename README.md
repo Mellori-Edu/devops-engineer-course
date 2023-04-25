@@ -5,7 +5,21 @@
 * Laravel version: 8.40
 * Mysql: 5.7
 * composer: latest version
-* docker-compose: version 1.29.1
+* docker-compose: version 1.29.2
+
+```
+sudo amazon-linux-extras install -y docker
+sudo service docker start
+sudo usermod -a -G docker ec2-user
+sudo chkconfig docker on
+sudo yum install -y git
+sudo curl -L https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+echo 'export PATH="/usr/local/bin:$PATH"' >> ~/.bash_profile
+source ~/.bash_profile
+docker-compose version
+
+```
 
 ## How to build base
 ```
@@ -66,7 +80,7 @@ php artisan migrate
 docker-compose -p laraveldemo -f docker-compose.yml up node
 ```
 
-### Upgradet laravel (Please backup your source before doing that)
+### Upgrade laravel (Please backup your source before doing that)
 ```
 rm -rf src && mkdir src
 DOCKER_IMAGE=laraveldemo_base
