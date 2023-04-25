@@ -94,9 +94,6 @@ generate_settings:
 		| sed "s/BUCKET_NAME/${BUCKET_NAME}/; s/AWS_PROFILE/${AWS_PROFILE}/; s/AWS_AMI_ID/${AWS_AMI_ID}/" \
 		> "${TF_PATH}/variables.tf"
 
-	echo "Please update your ami_id for you region in ${TF_PATH}/variables.tf . Firt running make list_ami_aws_default to get list aws aim and choose a item"
-
-
 	cat ${TEMPLATE_PATH}/ecs_example.tpl \
 		| sed "s/SHORT_ENV/${SHORT_ENV}/; s/PROJECT_NAME/${PROJECT_NAME}/; s/ACCOUNT_ID/${ACCOUNT_ID}/; s/AWS_REGION/${AWS_REGION}/" \
 		| sed "s/BUCKET_NAME/${BUCKET_NAME}/; s/AWS_PROFILE/${AWS_PROFILE}/" \

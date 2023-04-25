@@ -115,6 +115,7 @@ terraform apply
 * To use the file example/ecs_example.tpl to build the file iac/terraform/environments/dev/common/scripts/ecs.tpl
 
 #### Using scripts
+Fill in variable in makefile with suitable values.
 ```
 make generate_settings
 ```
