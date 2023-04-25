@@ -93,6 +93,22 @@ Please AWS_REGION with your real value.
 
 
 ###  Terraform
+####  Install terraform
+
+https://github.com/tfutils/tfenv
+
+```
+sudo yum install -y git
+git clone --depth=1 https://github.com/tfutils/tfenv.git ~/.tfenv
+echo 'export PATH="$HOME/.tfenv/bin:$PATH"' >> ~/.bash_profile
+source ~/.bash_profile
+tfenv install latest
+tfenv use x.y.z
+terraform --version
+```
+
+#### Running terraform
+
 ```
 cd iac/terraform/environments/dev/common
 
@@ -116,6 +132,7 @@ terraform apply
 
 #### Using scripts
 Fill in variable in makefile with suitable values.
+If you are using aws ec2 instance profile, please leave AWS_PROFILE blank
 ```
 make generate_settings
 ```
