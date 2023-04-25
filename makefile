@@ -1,4 +1,4 @@
-export AWS_PROFILE :=lamhaison
+export AWS_PROFILE :=
 export AWS_REGION  :=ap-southeast-1
 export PROJECT_NAME :=lamhaison-2023
 export ACCOUNT_ID :=813995029960
