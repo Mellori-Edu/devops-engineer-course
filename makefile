@@ -76,25 +76,25 @@ list_ami_aws_default:
 
 generate_settings:
 	cat ${TEMPLATE_PATH}/buildspec_example.yml \
-		| sed "s/SHORT_ENV/${SHORT_ENV}/; s/PROJECT_NAME/${PROJECT_NAME}/; s/ACCOUNT_ID/${ACCOUNT_ID}/; s/AWS_REGION/${AWS_REGION}/" \
+		| sed "s/SHORT_ENV/${SHORT_ENV}/g; s/PROJECT_NAME/${PROJECT_NAME}/g; s/ACCOUNT_ID/${ACCOUNT_ID}/g; s/AWS_REGION/${AWS_REGION}/g" \
 		> "codebuild/buildspec.yml"
 
 	cat ${TEMPLATE_PATH}/taskdef_template_example.json \
-		| sed "s/SHORT_ENV/${SHORT_ENV}/; s/PROJECT_NAME/${PROJECT_NAME}/; s/ACCOUNT_ID/${ACCOUNT_ID}/; s/AWS_REGION/${AWS_REGION}/" \
+		| sed "s/SHORT_ENV/${SHORT_ENV}/g; s/PROJECT_NAME/${PROJECT_NAME}/g; s/ACCOUNT_ID/${ACCOUNT_ID}/g; s/AWS_REGION/${AWS_REGION}/g" \
 		> "codedeploy/taskdef_template.json"
 
 
 	cat ${TEMPLATE_PATH}/terraform_provider_example.tf \
-		| sed "s/SHORT_ENV/${SHORT_ENV}/; s/PROJECT_NAME/${PROJECT_NAME}/; s/ACCOUNT_ID/${ACCOUNT_ID}/; s/AWS_REGION/${AWS_REGION}/" \
-		| sed "s/BUCKET_NAME/${BUCKET_NAME}/; s/AWS_PROFILE/${AWS_PROFILE}/" \
+		| sed "s/SHORT_ENV/${SHORT_ENV}/g; s/PROJECT_NAME/${PROJECT_NAME}/g; s/ACCOUNT_ID/${ACCOUNT_ID}/g; s/AWS_REGION/${AWS_REGION}/g" \
+		| sed "s/BUCKET_NAME/${BUCKET_NAME}/g; s/AWS_PROFILE/${AWS_PROFILE}/g" \
 		> "${TF_PATH}/provider.tf"
 
 	cat ${TEMPLATE_PATH}/terraform_variables_example.tf \
-		| sed "s/SHORT_ENV/${SHORT_ENV}/; s/PROJECT_NAME/${PROJECT_NAME}/; s/ACCOUNT_ID/${ACCOUNT_ID}/; s/AWS_REGION/${AWS_REGION}/" \
-		| sed "s/BUCKET_NAME/${BUCKET_NAME}/; s/AWS_PROFILE/${AWS_PROFILE}/; s/AWS_AMI_ID/${AWS_AMI_ID}/" \
+		| sed "s/SHORT_ENV/${SHORT_ENV}/g; s/PROJECT_NAME/${PROJECT_NAME}/g; s/ACCOUNT_ID/${ACCOUNT_ID}/g; s/AWS_REGION/${AWS_REGION}/g" \
+		| sed "s/BUCKET_NAME/${BUCKET_NAME}/g; s/AWS_PROFILE/${AWS_PROFILE}/g; s/AWS_AMI_ID/${AWS_AMI_ID}/g" \
 		> "${TF_PATH}/variables.tf"
 
 	cat ${TEMPLATE_PATH}/ecs_example.tpl \
-		| sed "s/SHORT_ENV/${SHORT_ENV}/; s/PROJECT_NAME/${PROJECT_NAME}/; s/ACCOUNT_ID/${ACCOUNT_ID}/; s/AWS_REGION/${AWS_REGION}/" \
-		| sed "s/BUCKET_NAME/${BUCKET_NAME}/; s/AWS_PROFILE/${AWS_PROFILE}/" \
+		| sed "s/SHORT_ENV/${SHORT_ENV}/g; s/PROJECT_NAME/${PROJECT_NAME}/g; s/ACCOUNT_ID/${ACCOUNT_ID}/g; s/AWS_REGION/${AWS_REGION}/g" \
+		| sed "s/BUCKET_NAME/${BUCKET_NAME}/g; s/AWS_PROFILE/${AWS_PROFILE}/g" \
 		> "${TF_PATH}/scripts/ecs.tpl"
